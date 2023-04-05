@@ -1,0 +1,31 @@
+.boardToPlace{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 1px;
+    width: 400px;
+    margin: 0 auto;
+    background-color: #78d4ff;
+  }
+  
+.grid {
+width: 40px;
+height: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #2c96c7;
+}
+  
+.boardToClick{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 1px;
+    width: 400px;
+    margin: 0 auto;
+    background-color: #78d4ff;
+  }
+
+
+h1{
+    text-align: center;
+}
