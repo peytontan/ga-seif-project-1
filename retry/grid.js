@@ -8,6 +8,7 @@ class createBoard{
         this.grid = []
         this.gridObj={} //do i need this? 
         this.gridIndex=[]
+        this.gridOneD=[] //to select grid for pc (easier to select)
     }
     makeGrid (){ //this will make a grid with the "proper" cell nams instead of seeing "x"    
     let counter = 0
@@ -19,6 +20,7 @@ class createBoard{
             counter++
             this.gridObj[cells]=counter
             this.gridIndex.push(counter)
+            this.gridOneD.push(cells)
         }
     }
     // return this.gridObj
@@ -36,7 +38,12 @@ class createBoard{
 }
 
 const board = new createBoard()
+const userBoard = new createBoard()
 board.makeGrid() 
+userBoard.makeGrid() 
+// console.log(board.gridIndex)
 // console.log(board.makeGrid())
+// console.log(board.gridIndex)
+// console.log(board.gridOneD)
 
-export {arrayAlphabets, arrayNumbers, createBoard, board}
+export {arrayAlphabets, arrayNumbers, createBoard, board,userBoard}
