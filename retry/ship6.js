@@ -100,7 +100,9 @@ class Ship {
                     let lastIndex = this.location[this.location.length - 1]; //we need to get the first index that we pushed initially 
                     let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is horitonztal
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
-                    if (nextIndex <= 100 && nextIndex<=endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
+                    let endRowNextIndex = (Math.floor(nextIndex / 10) + 1) * 10
+                    console.log(`last index = ${lastIndex}, next index = ${nextIndex}, endrowindex = ${endRowIndex}, endrownextindex = ${endRowNextIndex}`)
+                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!pcTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
                         pcTakenGrids.push(nextIndex)
                           this.location.push(nextIndex);
@@ -138,7 +140,9 @@ class Ship {
                     let lastIndex = this.location[this.location.length - 1]; //we need to get the first index that we pushed initially 
                     let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is horizontal
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
-                    if (nextIndex <= 100 && nextIndex<=endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
+                    let endRowNextIndex = (Math.floor(nextIndex / 10) + 1) * 10
+                    console.log(`last index = ${lastIndex}, next index = ${nextIndex}, endrowindex = ${endRowIndex}, endrownextindex = ${endRowNextIndex}`)
+                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!userTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
                         userTakenGrids.push(nextIndex)
                           this.location.push(nextIndex);
