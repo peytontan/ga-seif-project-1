@@ -24,6 +24,16 @@ background-color: #2c96c7;
   align-items: center;
   background-color: #2c96c7;
   }
+
+
+.pcGrid {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c96c7;
+    }
   
 .boardToClick{
     display: grid;
