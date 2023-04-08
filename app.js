@@ -1,21 +1,22 @@
-import { createBoard, arrayAlphabets, arrayNumbers, board } from "./grid.js"
-import {Ship, carrierUser,battleshipUser,cruiserUser,submarineUser,destroyerUser,shipsUser,shipPC} from "./ship.js"
+import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard } from "./grid.js"
+import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC} from "./ship.js"
 
 
 $(()=>{
     board.gridIndex.forEach(grid => {
-        const $gridToPlace = $('<div>').attr('id',grid).addClass("grid")
-        const $battleShipBoard = $('.boardToPlace')
-        $battleShipBoard.append($gridToPlace)
-        
         const $pcGrid = $('<div>').attr('id',grid).addClass("PCgrid")
         const $pcBattleshipBoard = $('.PC')
         $pcBattleshipBoard.append($pcGrid)
         shipPC.forEach(element => {
             element.location.forEach(cell => {
-                $(`#${cell}.PCgrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+                $(`#${cell}.PCGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
             })
         })
+        // shipPC.forEach(element => {
+        //     element.location.forEach(cell => {
+        //         $(`#${cell}.PCgrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+        //     })
+        // })
         // $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check
         
         const $gridToClick = $('<div>').attr('id',grid).addClass("userGrid")
@@ -25,11 +26,21 @@ $(()=>{
             element.location.forEach(cell => {
                 $gridToClick.on("click",()=>{
                     console.log("yo")
-                    $(`#${cell}.userGrid`).css("background-colour","red")}) //need to think of ways to stop it from overlapping
-                // $(`#${cell}.userGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+                    $(`#${cell}.PCgrid`).css("background-colour","red")}) 
             })
         })
+    })
 
+    userBoard.gridIndex.forEach(grid=>{
+        const $gridToPlace = $('<div>').attr('id',grid).addClass("grid")
+        const $battleShipBoard = $('.userBoard')
+        $battleShipBoard.append($gridToPlace)
+        shipsUser.forEach(element => {
+            element.location.forEach(cell => {
+                $(`#${cell}.userGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+            })
+        })
+    })
 
         // if (shipsUser.forEach(element => {
         //     element.location.forEach(loc=>console.log(loc))
@@ -51,5 +62,5 @@ $(()=>{
             // }
             // )
         // }
-    })
+    
 })

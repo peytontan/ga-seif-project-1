@@ -1,4 +1,4 @@
-.boardToPlace{
+.userBoard{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 1px;
