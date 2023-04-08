@@ -197,8 +197,8 @@ shipPC.forEach(element => element.placeShipInGrid("PC"))
 
 console.log(shipsUser)
 console.log(shipPC)
-console.log(pcTakenGrids.sort())
-console.log(userTakenGrids.sort())
+console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
+console.log(userTakenGrids.length,userTakenGrids)
 
 
 export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC}
