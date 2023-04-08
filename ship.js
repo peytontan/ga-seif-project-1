@@ -195,7 +195,10 @@ const shipPC = [carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC]
 
 shipPC.forEach(element => element.placeShipInGrid("PC"))
 
-console.log(shipPC)
 console.log(shipsUser)
+console.log(shipPC)
 console.log(pcTakenGrids.sort())
 console.log(userTakenGrids.sort())
+
+
+export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC}
