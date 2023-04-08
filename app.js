@@ -4,12 +4,12 @@ import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiser
 
 $(()=>{
     board.gridIndex.forEach(grid => {
-        const $pcGrid = $('<div>').attr('id',grid).addClass("PCgrid")
-        const $pcBattleshipBoard = $('.PC')
+        const $pcGrid = $('<div>').attr('id',grid).addClass("pcGrid")
+        const $pcBattleshipBoard = $('.PC') //from html
         $pcBattleshipBoard.append($pcGrid)
         shipPC.forEach(element => {
             element.location.forEach(cell => {
-                $(`#${cell}.PCGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+                $(`#${cell}.pcGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
             })
         })
         // shipPC.forEach(element => {
@@ -19,20 +19,20 @@ $(()=>{
         // })
         // $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check
         
-        const $gridToClick = $('<div>').attr('id',grid).addClass("userGrid")
-        const $battleShipBoardToClick = $('.boardToClick')
-        $battleShipBoardToClick.append($gridToClick)
-        shipPC.forEach(element => {
-            element.location.forEach(cell => {
-                $gridToClick.on("click",()=>{
-                    console.log("yo")
-                    $(`#${cell}.PCgrid`).css("background-colour","red")}) 
-            })
+        // const $gridToClick = $('<div>').attr('id',grid).addClass("userGrid")
+        // const $battleShipBoardToClick = $('.boardToClick')
+        // $battleShipBoardToClick.append($gridToClick)
+        // shipPC.forEach(element => {
+        //     element.location.forEach(cell => {
+        //         $gridToClick.on("click",()=>{
+                    // console.log("yo")
+                    // $(`#${cell}.PCgrid`).css("background-colour","red")}) 
+            // })
         })
-    })
 
-    userBoard.gridIndex.forEach(grid=>{
-        const $gridToPlace = $('<div>').attr('id',grid).addClass("grid")
+
+    userBoard.gridIndex.forEach(grid=>{ //this is to show the randomly generated grids for user
+        const $gridToPlace = $('<div>').attr('id',grid).addClass("userGrid")
         const $battleShipBoard = $('.userBoard')
         $battleShipBoard.append($gridToPlace)
         shipsUser.forEach(element => {
