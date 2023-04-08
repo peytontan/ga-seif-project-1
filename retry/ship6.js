@@ -98,7 +98,7 @@ class Ship {
                 }
                 while (this.location.length<this.size){ //we make sure that the size of the ship is fulfilled
                     let lastIndex = this.location[this.location.length - 1]; //we need to get the first index that we pushed initially 
-                    let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is vertical
+                    let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is horitonztal
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
                     if (nextIndex <= 100 && nextIndex<=endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!pcTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
@@ -136,7 +136,7 @@ class Ship {
                 }
                 while (this.location.length<this.size){ //we make sure that the size of the ship is fulfilled
                     let lastIndex = this.location[this.location.length - 1]; //we need to get the first index that we pushed initially 
-                    let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is vertical
+                    let nextIndex = lastIndex + 1; //this will increase by 1 becaues this is horizontal
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
                     if (nextIndex <= 100 && nextIndex<=endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!userTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
