@@ -9,11 +9,26 @@
     charset="utf-8"
   ></script>
   <!-- <script src="app.js" type=module charset="utf-8"></script> -->
-  <script src="./helper/simple_cell.js" type=module charset="utf-8"></script>
+  <script src="app.js" type=module charset="utf-8"></script>
   <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Battleship Game</title>
 </head>
 <body>
-    
+    <div class = "shipsForUser">
+        <div class = "carrier" draggable="true"></div>
+        <div class = "battleship" draggable="true"></div>
+        <div class = "cruiser" draggable="true"></div>
+        <div class = "submarine" draggable="true"></div>
+        <div class = "destroyer" draggable="true"></div>
+    </div>
+
+    <h1>Place Your Ships</h1>
+    <div class = "boardToPlace" ></div>
+    <br>
+    <br>
+    <h1>Click to guess Enemy's ships</h1>
+    <div class = "boardToClick"></div>
+    <h1>Enemy's board (for testing)</h1>
+    <div class = "PC"></div>
 </body>
 </html>
