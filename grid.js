@@ -39,11 +39,13 @@ class createBoard{
 
 const board = new createBoard()
 const userBoard = new createBoard()
+const gameBoard = new createBoard()
 board.makeGrid() 
 userBoard.makeGrid() 
+gameBoard.makeGrid()
 // console.log(board.gridIndex)
 // console.log(board.makeGrid())
 // console.log(board.gridIndex)
 // console.log(board.gridOneD)
 
-export {arrayAlphabets, arrayNumbers, createBoard, board,userBoard}
+export {arrayAlphabets, arrayNumbers, createBoard, board,userBoard,gameBoard}
