@@ -1,4 +1,4 @@
-import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard } from "./grid.js"
+import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard,gameBoard} from "./grid.js"
 
 
 let pcTakenGrids = [] //it shouldn't be within the if conditionals because once its taken it shouldn't be erased again
