@@ -50,7 +50,7 @@ $(()=>{
     //------------------------------------------------------------------------------------------------
 
  //this is for when the user is clicking on the enemy's ship and it matches the same grid that the enemy has placed their ship at, it will turn the grid red colour
- pcGrids.forEach(cell => {
+    pcGrids.forEach(cell => {
         $(`#${cell}.clickGrid`).on('click',()=>{
             if (userTurn){
                 $(`#${cell}.clickGrid`).css("background-color","red")
@@ -153,7 +153,7 @@ $(()=>{
     // let availableIndexesPC = userBoard.gridIndex
     // let index = Math.floor(Math.random() * board.gridIndex.length)-1
     // let gridIndex = availableIndexesPC[index]   
-    //     if (userGrids.includes(gridIndex)){
+    //     if (userTakenGrids.includes(gridIndex)){
     //         console.log(gridIndex)
     //         $(`#${gridIndex}.userGrid`).css("background-color","orange").toggleClass("hit")
     //         availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
