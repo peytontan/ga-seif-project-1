@@ -21,25 +21,20 @@ $(()=>{
         $battleShipBoardToClick.append($gridToClick)
     })
 
+    
+    shipPC.forEach(element => { //this is for when the user is clicking on the enemy's ship and it matches the same grid that the enemy has placed their ship at, it will turn the grid red colour
+        element.location.forEach(cell => {
+            $(`#${cell}.clickGrid`).on('click',()=>{
+                $(`#${cell}.clickGrid`).css("background-color","red")
+                alert(`${cell} was hit`)
+            })
+            }) 
+        })
 
-        // shipPC.forEach(element => {
-        //     element.location.forEach(cell => {
-        //         $(`#${cell}.PCgrid`).css("background-color","red") //need to think of ways to stop it from overlapping
-        //     })
-        // })
-        // $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check
+
+
+    // $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check
         
-        // const $gridToClick = $('<div>').attr('id',grid).addClass("userGrid")
-        // const $battleShipBoardToClick = $('.boardToClick')
-        // $battleShipBoardToClick.append($gridToClick)
-        // shipPC.forEach(element => {
-        //     element.location.forEach(cell => {
-        //         $gridToClick.on("click",()=>{
-                    // console.log("yo")
-                    // $(`#${cell}.PCgrid`).css("background-colour","red")}) 
-            // })
-
-
     userBoard.gridIndex.forEach(grid=>{ //this is to show the randomly generated grids for user
         const $gridToPlace = $('<div>').attr('id',grid).addClass("userGrid")
         const $battleShipBoard = $('.userBoard')
@@ -51,25 +46,4 @@ $(()=>{
         })
     })
 
-        // if (shipsUser.forEach(element => {
-        //     element.location.forEach(loc=>console.log(loc))
-        // })==$gridToClick){
-        //     console.log('wow')
-        // }
-        // $gridToClick.on("click",()=>{
-        //     if ($gridToClick.attr('id')===shipsUser.forEach(element => {
-        //             element.location.forEach(loc=>console.log(loc))
-        //         })){
-        //             $gridToClick.css("background-color","red") //this should be only when its hit
-        //         }
-        //     })
-
-
-        // if ($grid.attr('id')===asd){
-            // $gridToClick.on("click",()=>{
-            //     $gridToClick.css("background-color","red") //this should be only when its hit
-            // }
-            // )
-        // }
-    
 })
