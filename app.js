@@ -1,7 +1,7 @@
 import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard, gameBoard } from "./grid.js"
 import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids,userGrids,pcGrids} from "./ship.js"
 
-
+let availableIndexesPC = userBoard.gridIndex //need to define this variable first
 $(()=>{
     let userTurn = true //this allows us to keep track of whose turn it is
     let turnCounter = 0
@@ -49,6 +49,33 @@ $(()=>{
     //code above works do not touch
     //------------------------------------------------------------------------------------------------
 
+    const pcAction = () => {
+        let index = Math.floor(Math.random() * availableIndexesPC.length)//it needs to be taking from availableIndexPC because everytime its PC's turn, the number of index available for selection reduces
+        let gridIndex = availableIndexesPC[index]   
+            if (userGrids.includes(gridIndex)){
+                console.log("current", gridIndex, availableIndexesPC)
+                $(`#${gridIndex}.userGrid`).css("background-color","red").toggleClass("hit")
+                availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
+                // console.log("availble index", availableIndexesPC)
+                console.log("new", availableIndexesPC)
+                turnCounter+=1
+                $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
+                toggleTurns()
+            } else {
+                console.log("not included in grid", gridIndex,availableIndexesPC)
+                $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
+                availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
+                // console.log("availble index",availableIndexesPC)
+                console.log("else new",availableIndexesPC)
+                turnCounter+=1
+                $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
+                toggleTurns()
+                }
+}
+
+
  //this is for when the user is clicking on the enemy's ship and it matches the same grid that the enemy has placed their ship at, it will turn the grid red colour
     pcGrids.forEach(cell => {
         $(`#${cell}.clickGrid`).on('click',()=>{
@@ -62,28 +89,7 @@ $(()=>{
                 $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                 toggleTurns()
             } else {
-                let availableIndexesPC = userBoard.gridIndex
-                let index = Math.floor(Math.random() * board.gridIndex.length)-1
-                let gridIndex = availableIndexesPC[index]   
-                    if (userGrids.includes(gridIndex)){
-                        console.log(gridIndex)
-                        $(`#${gridIndex}.userGrid`).css("background-color","red").toggleClass("hit")
-                        availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                        // console.log("availble index", availableIndexesPC)
-                        turnCounter+=1
-                        $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                        toggleTurns()
-                    } else {
-                        console.log(gridIndex)
-                        $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
-                        availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                        // console.log("availble index",availableIndexesPC)
-                        turnCounter+=1
-                        $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                        toggleTurns()
-                }
+                pcAction()
             }
         })
     }) 
@@ -101,28 +107,7 @@ $(()=>{
                 toggleTurns()
                 // console.log(userTurn)
             } else {
-                let availableIndexesPC = userBoard.gridIndex
-                let index = Math.floor(Math.random() * board.gridIndex.length)-1
-                let gridIndex = availableIndexesPC[index]   
-                    if (userGrids.includes(gridIndex)){
-                        console.log(gridIndex)
-                        $(`#${gridIndex}.userGrid`).css("background-color","red").toggleClass("hit")
-                        availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                        // console.log("availble index", availableIndexesPC)
-                        turnCounter+=1
-                        $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                        toggleTurns()
-                    } else {
-                        console.log(gridIndex) //will need to check why there is an undefined
-                        $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
-                        availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                        // console.log("availble index",availableIndexesPC)
-                        turnCounter+=1
-                        $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                        toggleTurns()
-                }
+                pcAction()
             }
         })
     })
@@ -157,7 +142,7 @@ $(()=>{
     //pc randomly selecting
     //create a new array for userboard's gridindex
     // let availableIndexesPC = userBoard.gridIndex
-    // let index = Math.floor(Math.random() * board.gridIndex.length)-1
+    // let index = Math.floor(Math.random() * board.gridIndex.length)
     // let gridIndex = availableIndexesPC[index]   
     //     if (userTakenGrids.includes(gridIndex)){
     //         console.log(gridIndex)
