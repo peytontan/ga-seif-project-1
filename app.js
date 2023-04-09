@@ -3,6 +3,11 @@ import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiser
 
 
 $(()=>{
+    let userTurn = true //this allows us to keep track of whose turn it is
+    let turnCounter = 0
+
+    $('.turnCount').text(`Turn Count = ${turnCounter}`)
+
     //this section is for pc's ships that were placed 
     board.gridIndex.forEach(grid => { 
         const $pcGrid = $('<div>').attr('id',grid).addClass("pcGrid") 
