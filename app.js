@@ -1,5 +1,5 @@
 import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard, gameBoard } from "./grid.js"
-import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC} from "./ship.js"
+import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids} from "./ship.js"
 
 
 $(()=>{
@@ -13,6 +13,7 @@ $(()=>{
                 $(`#${cell}.pcGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
             })
         })
+        $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check in elements hehe
     })
 
     gameBoard.gridIndex.forEach(grid => { 
@@ -26,14 +27,20 @@ $(()=>{
         element.location.forEach(cell => {
             $(`#${cell}.clickGrid`).on('click',()=>{
                 $(`#${cell}.clickGrid`).css("background-color","red")
+                $(`#${cell}.clickGrid`).toggleClass("hit")
                 alert(`${cell} was hit`)
             })
             }) 
         })
 
+    pcNotTakenGrids.forEach(cell => { //to  see which of the enemy grids are not occupied, and when its clicked on, we need to change it to green because it means that it wasn't hit on 
+            $(`#${cell}.clickGrid`).on('click',()=>{
+                $(`#${cell}.clickGrid`).css("background-color","green")
+                $(`#${cell}.clickGrid`).toggleClass("missed")
+            })
+            })
 
 
-    // $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check
         
     userBoard.gridIndex.forEach(grid=>{ //this is to show the randomly generated grids for user
         const $gridToPlace = $('<div>').attr('id',grid).addClass("userGrid")
