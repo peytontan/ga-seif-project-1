@@ -195,10 +195,16 @@ const shipPC = [carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC]
 
 shipPC.forEach(element => element.placeShipInGrid("PC"))
 
+let pcNotTakenGrids = []
+let userNotTakenGrids = []
+
+pcNotTakenGrids = board.gridIndex.filter((element) => !pcTakenGrids.includes(element))
+userNotTakenGrids = userBoard.gridIndex.filter((element) => !userTakenGrids.includes(element))
+
 console.log(shipsUser)
 console.log(shipPC)
-console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
-console.log(userTakenGrids.length,userTakenGrids)
+// console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
+// console.log(userTakenGrids.length,userTakenGrids)
 
 
-export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC}
+export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids}
