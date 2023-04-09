@@ -6,7 +6,7 @@ $(()=>{
     let userTurn = true //this allows us to keep track of whose turn it is
     let turnCounter = 0
     $('.turnCount').text(`Turn Count = ${turnCounter}`)
-
+    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
     
     //user's board
     userBoard.gridIndex.forEach(grid=>{ //this is to show the randomly generated grids for user
@@ -58,6 +58,7 @@ $(()=>{
                 alert(`grid ${cell} was hit`)
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                 toggleTurns()
             } else {
@@ -71,6 +72,7 @@ $(()=>{
                         // console.log("availble index", availableIndexesPC)
                         turnCounter+=1
                         $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                         toggleTurns()
                     } else {
                         console.log(gridIndex)
@@ -79,6 +81,7 @@ $(()=>{
                         // console.log("availble index",availableIndexesPC)
                         turnCounter+=1
                         $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                         toggleTurns()
                 }
             }
@@ -94,6 +97,7 @@ $(()=>{
                 $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                 // console.log(userTurn)
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 toggleTurns()
                 // console.log(userTurn)
             } else {
@@ -107,6 +111,7 @@ $(()=>{
                         // console.log("availble index", availableIndexesPC)
                         turnCounter+=1
                         $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                         toggleTurns()
                     } else {
                         console.log(gridIndex) //will need to check why there is an undefined
@@ -115,6 +120,7 @@ $(()=>{
                         // console.log("availble index",availableIndexesPC)
                         turnCounter+=1
                         $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                        $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                         toggleTurns()
                 }
             }
