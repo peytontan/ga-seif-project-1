@@ -102,7 +102,7 @@ class Ship {
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
                     let endRowNextIndex = (Math.floor(nextIndex / 10) + 1) * 10
                     console.log(`last index = ${lastIndex}, next index = ${nextIndex}, endrowindex = ${endRowIndex}, endrownextindex = ${endRowNextIndex}`)
-                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
+                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex && lastIndex!==(endRowIndex-10)) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!pcTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
                         pcTakenGrids.push(nextIndex)
                           this.location.push(nextIndex);
@@ -142,7 +142,7 @@ class Ship {
                     let endRowIndex = (Math.floor(lastIndex / 10) + 1) * 10
                     let endRowNextIndex = (Math.floor(nextIndex / 10) + 1) * 10
                     console.log(`last index = ${lastIndex}, next index = ${nextIndex}, endrowindex = ${endRowIndex}, endrownextindex = ${endRowNextIndex}`)
-                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex) { //if the index does not exceed the grid by 100, continue to get the next grid
+                    if (nextIndex <= 100 && endRowNextIndex===endRowIndex && lastIndex!==(endRowIndex-10)) { //if the index does not exceed the grid by 100, continue to get the next grid
                       if (!userTakenGrids.includes(nextIndex)) { // check if the next index is already in the location array, if it is not taken, continue to push the next index
                         userTakenGrids.push(nextIndex)
                           this.location.push(nextIndex);
@@ -217,8 +217,8 @@ console.log(shipsUser)
 console.log(shipPC)
 // // console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
 // // console.log(userTakenGrids.length,userTakenGrids)
-console.log(userTakenGrids, userGrids.length)
-console.log(pcTakenGrids, pcGrids.length)
+console.log(userGrids, userGrids.length)
+console.log(pcGrids, pcGrids.length)
 
 
 export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids,userGrids,pcGrids}
