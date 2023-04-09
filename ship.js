@@ -39,7 +39,7 @@ class Ship {
                       }
                       }
                     } else { //when it goes out of grid where index > 100 
-                      console.log(`Out of grid, try again for ship ${this.name} ${this.orientation}`);
+                      console.log(`PC: Out of grid, try again for ship ${this.name} ${this.orientation}`);
                       this.location = [];
                       let newGridIndex = Math.floor(Math.random() * board.gridIndex.length)-1
                       let newGrid = board.gridIndex[newGridIndex]
@@ -76,7 +76,7 @@ class Ship {
                       }
                       }
                     } else { //when it goes out of grid where index > 100 
-                      console.log(`Out of grid, try again for ship ${this.name} ${this.orientation}`);
+                      console.log(`User: Out of grid, try again for ship ${this.name} ${this.orientation}`);
                       this.location = [];
                       let newGridIndexUser = Math.floor(Math.random() * userBoard.gridIndex.length)-1
                       let newGridUser = userBoard.gridIndex[newGridIndexUser]
@@ -118,7 +118,7 @@ class Ship {
                       }
                       }
                     } else { //when it goes out of grid where index > 100 
-                      console.log(`Out of grid, try again for ship ${this.name} ${this.orientation}and ${this.orientation}`);
+                      console.log(`PC: Out of grid, try again for ship ${this.name} ${this.orientation}and ${this.orientation}`);
                       this.location = [];
                       let newGridIndex = Math.floor(Math.random() * board.gridIndex.length)-1
                       let newGrid = board.gridIndex[newGridIndex]
@@ -148,7 +148,7 @@ class Ship {
                           this.location.push(nextIndex);
                           console.log(`PC: 2 ${this.name}'s location is ${this.location} and ${this.orientation}`)
                       } else { // if the next index is already in the location array, try again
-                        console.log(`Overlapping location, try again for ship ${this.name}, ${this.orientation}`);
+                        console.log(`PC: Overlapping location, try again for ship ${this.name}, ${this.orientation}`);
                         this.location = [];
                         let newGridIndex = Math.floor(Math.random() * board.gridIndex.length)-1 //randomise the next index to pick
                         let newGrid = board.gridIndex[newGridIndex]  //to get the board's index after randomising
@@ -158,7 +158,7 @@ class Ship {
                       }
                       }
                     } else { //when it goes out of grid where index > 100 
-                      console.log(`Out of grid, try again for ship ${this.name} ${this.orientation}and ${this.orientation}`);
+                      console.log(`PC: Out of grid, try again for ship ${this.name} ${this.orientation}and ${this.orientation}`);
                       this.location = [];
                       let newGridIndex = Math.floor(Math.random() * board.gridIndex.length)-1
                       let newGrid = board.gridIndex[newGridIndex]
