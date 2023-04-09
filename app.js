@@ -52,8 +52,9 @@ $(()=>{
                 $(`#${cell}.clickGrid`).css("background-color","red")
                 $(`#${cell}.clickGrid`).toggleClass("hit")
                 alert(`${cell} was hit`)
-                turnCounter=+1
+                turnCounter+=1
                 console.log(turnCounter)
+                $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
             })
         }) 
     })
@@ -64,6 +65,7 @@ $(()=>{
             $(`#${cell}.clickGrid`).toggleClass("missed")
             turnCounter+=1
             console.log(turnCounter)
+            $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
         })
     })
     
