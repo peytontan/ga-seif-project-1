@@ -185,6 +185,10 @@ const destroyerUser = new Ship("destroyer", 2,Math.floor(Math.random()*2)=== 0 ?
 const shipsUser = [carrierUser, battleshipUser, cruiserUser, submarineUser, destroyerUser];
 shipsUser.forEach(element => element.placeShipInGrid("user"))
 
+let pcGrids = []
+shipsUser.forEach(element => element.location.forEach(index => pcGrids.push(index)))
+// console.log(pcGrids.length)
+
 
 const carrierPC = new Ship("carrier", 5,Math.floor(Math.random()*2)=== 0 ? "horizontal" : "vertical");
 const battleshipPC = new Ship("battleship", 4,Math.floor(Math.random()*2)=== 0 ? "horizontal" : "vertical");
@@ -194,17 +198,27 @@ const destroyerPC = new Ship("destroyer", 2,Math.floor(Math.random()*2)=== 0 ? "
 const shipPC = [carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC]
 
 shipPC.forEach(element => element.placeShipInGrid("PC"))
+let userGrids = []
+shipPC.forEach(element => element.location.forEach(index => userGrids.push(index)))
+// console.log(userGrids.length)
+
+// console.log(shipPC.location)
+
+// pcTakenGrids=pcTakenGrids.filter(value => value !==undefined)
+// userTakenGrids=userTakenGrids.filter(value => value !==undefined)
 
 let pcNotTakenGrids = []
 let userNotTakenGrids = []
 
-pcNotTakenGrids = board.gridIndex.filter((element) => !pcTakenGrids.includes(element))
-userNotTakenGrids = userBoard.gridIndex.filter((element) => !userTakenGrids.includes(element))
+pcNotTakenGrids = board.gridIndex.filter((element) => !pcGrids.includes(element))
+userNotTakenGrids = userBoard.gridIndex.filter((element) => !userGrids.includes(element))
 
 console.log(shipsUser)
 console.log(shipPC)
-// console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
-// console.log(userTakenGrids.length,userTakenGrids)
+// // console.log(pcTakenGrids.length,pcTakenGrids) //need to check why there is an undefined
+// // console.log(userTakenGrids.length,userTakenGrids)
+console.log(userTakenGrids, userGrids.length)
+console.log(pcTakenGrids, pcGrids.length)
 
 
-export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids}
+export {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids,userGrids,pcGrids}
