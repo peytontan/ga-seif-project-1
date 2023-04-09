@@ -185,8 +185,8 @@ const destroyerUser = new Ship("destroyer", 2,Math.floor(Math.random()*2)=== 0 ?
 const shipsUser = [carrierUser, battleshipUser, cruiserUser, submarineUser, destroyerUser];
 shipsUser.forEach(element => element.placeShipInGrid("user"))
 
-let pcGrids = []
-shipsUser.forEach(element => element.location.forEach(index => pcGrids.push(index)))
+let userGrids = []
+shipsUser.forEach(element => element.location.forEach(index => userGrids.push(index)))
 // console.log(pcGrids.length)
 
 
@@ -198,8 +198,8 @@ const destroyerPC = new Ship("destroyer", 2,Math.floor(Math.random()*2)=== 0 ? "
 const shipPC = [carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC]
 
 shipPC.forEach(element => element.placeShipInGrid("PC"))
-let userGrids = []
-shipPC.forEach(element => element.location.forEach(index => userGrids.push(index)))
+let pcGrids = []
+shipPC.forEach(element => element.location.forEach(index => pcGrids.push(index)))
 // console.log(userGrids.length)
 
 // console.log(shipPC.location)
