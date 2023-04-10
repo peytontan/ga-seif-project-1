@@ -59,33 +59,26 @@ $(()=>{
         let index = Math.floor(Math.random() * availableIndexesPC.length)//it needs to be taking from availableIndexPC because everytime its PC's turn, the number of index available for selection reduces
         let gridIndex = availableIndexesPC[index]   
             if (userGrids.includes(gridIndex)){
-                // console.log("current", gridIndex, availableIndexesPC)
                 $(`#${gridIndex}.userGrid`).css("background-color","red").toggleClass("hit")
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                // console.log("availble index", availableIndexesPC)
-                // console.log("new", availableIndexesPC)
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 toggleTurns()
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 gameOver()
             } else {
-                // console.log("not included in grid", gridIndex,availableIndexesPC)
                 $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-                // console.log("availble index",availableIndexesPC)
-                // console.log("else new",availableIndexesPC)
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 toggleTurns()
+                $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 gameOver()
                 }
 }
 
 
  //this is for when the user is clicking on the enemy's ship and it matches the same grid that the enemy has placed their ship at, it will turn the grid red colour
-//  while (!)
     pcGrids.forEach(cell => {
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
@@ -94,9 +87,9 @@ $(()=>{
                 //    alert(`grid ${cell} was hit`)
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
+                   toggleTurns()
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-                   toggleTurns()
                    gameOver()
                    setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
@@ -111,8 +104,8 @@ $(()=>{
                    turnCounter+=1
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                   $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    toggleTurns()
+                   $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    gameOver()
                    setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
