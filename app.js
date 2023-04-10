@@ -3,6 +3,10 @@ import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiser
 
 let availableIndexesPC = userBoard.gridIndex //need to define this variable first
 $(()=>{
+    $('.reset').on('click', () => {
+        location.reload(); //this reloads the current document
+    }) 
+
     const gameOver = () => {
         const userHits = $('.clickGrid.hit').length //this is what user managed to hit
         const pcHits = $('.userGrid.hit').length //this is waht pc managed to hit 
