@@ -42,13 +42,11 @@ $(()=>{
         })
         $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check in elements hehe
     })
-    
 
     //make a function to toggle between user and pc turn
     const toggleTurns = () => {
         userTurn = !userTurn //essentially either toggle it to true or false base on the current boolean
     }
-
 
     //board to click for user to guess
     gameBoard.gridIndex.forEach(grid => { 
@@ -56,8 +54,6 @@ $(()=>{
         const $battleShipBoardToClick = $('.boardToClick')
         $battleShipBoardToClick.append($gridToClick)
     })
-    //code above works do not touch
-    //------------------------------------------------------------------------------------------------
 
     const pcAction = () => {
         let index = Math.floor(Math.random() * availableIndexesPC.length)//it needs to be taking from availableIndexPC because everytime its PC's turn, the number of index available for selection reduces
@@ -72,7 +68,6 @@ $(()=>{
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 toggleTurns()
-                // console.log('checking..')
                 gameOver()
             } else {
                 // console.log("not included in grid", gridIndex,availableIndexesPC)
@@ -102,10 +97,8 @@ $(()=>{
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    toggleTurns()
-                //    console.log('checking..')
                    gameOver()
-               } else {
-                   pcAction()
+                   setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        }) 
@@ -117,61 +110,12 @@ $(()=>{
                    $(`#${cell}.clickGrid`).toggleClass("missed")
                    turnCounter+=1
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-                   // console.log(userTurn)
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    toggleTurns()
                    gameOver()
-                   // console.log(userTurn)
-               } else {
-                   pcAction()
+                   setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        })
-
-
-    //code below works do not touch
-    //-------------------------------------------------------------------------------------------------------------------
-    //this is the old code, if we are to remove the if portion then we can just check this
-    // shipPC.forEach(element => { //this is for when the user is clicking on the enemy's ship and it matches the same grid that the enemy has placed their ship at, it will turn the grid red colour
-    //     element.location.forEach(cell => {
-    //         $(`#${cell}.clickGrid`).on('click',()=>{
-    //             $(`#${cell}.clickGrid`).css("background-color","red")
-    //             $(`#${cell}.clickGrid`).toggleClass("hit")
-    //             alert(`grid ${cell} was hit`)
-    //             turnCounter+=1
-    //             console.log(turnCounter)
-    //             $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-    //         })
-    //     }) 
-    // })
-    
-    // pcNotTakenGrids.forEach(cell => { //to  see which of the enemy grids are not occupied, and when its clicked on, we need to change it to green because it means that it wasn't hit on 
-    //     $(`#${cell}.clickGrid`).on('click',()=>{
-    //         $(`#${cell}.clickGrid`).css("background-color","green")
-    //         $(`#${cell}.clickGrid`).toggleClass("missed")
-    //         turnCounter+=1
-    //         console.log(turnCounter)
-    //         $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-    //     })
-    // })
-
-    //pc randomly selecting
-    //create a new array for userboard's gridindex
-    // let availableIndexesPC = userBoard.gridIndex
-    // let index = Math.floor(Math.random() * board.gridIndex.length)
-    // let gridIndex = availableIndexesPC[index]   
-    //     if (userTakenGrids.includes(gridIndex)){
-    //         console.log(gridIndex)
-    //         $(`#${gridIndex}.userGrid`).css("background-color","orange").toggleClass("hit")
-    //         availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-    //         // console.log("availble index", availableIndexesPC)
-    //     } else {
-    //         console.log(gridIndex)
-    //         $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
-    //         availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
-    //         // console.log("availble index",availableIndexesPC)
-    // }
-    
-    // $('.turnCount').text(`Turn Count = ${turnCounter}`)
 })
