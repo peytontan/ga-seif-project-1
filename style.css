@@ -36,23 +36,23 @@
 }*/
 
 
-.userBoard{ 
+/* .userBoard{ 
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 1px;
     width: 400px;
     margin: 0 auto;
     background-color: #78d4ff;
-  }
+  } */
 
-.boardToClick{
+/* .boardToClick{
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 1px;
   width: 400px;
   margin: 0 auto;
   background-color: #78d4ff;
-}
+} */
 
 .PC {
   display: grid;
