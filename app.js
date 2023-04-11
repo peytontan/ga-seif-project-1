@@ -18,10 +18,18 @@ $(()=>{
       }
 
     let userTurn = true //this allows us to keep track of whose turn it is
+    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
     let turnCounter = 0
     $('.turnCount').text(`Turn Count = ${turnCounter}`)
-    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
     
+    let shipsLeftUser = 5  //this is indicate how many ships are left for user (pc attack user - show under userGrid)
+    let gridsLeftUser = 17 // to count for how many grids are left for user (pc attack user - show under userGrid)
+    let shipsLeftPc = 5  //this is to indicate how mayn ships are left for pc (user attack pc - to use for click grid) 
+    let gridsLeftPc = 17 // to count for how many grids are left for pc (user attack pc - to use for click grid?)
+
+    let $shipCounts = $('.shipsCount')
+    $shipCounts.text(`Ship grids remaining: ${gridsLeftPc}`)
+
     //user's board
     userBoard.gridIndex.forEach(grid=>{ //this is to show the randomly generated grids for user
         const $gridToPlace = $('<div>').attr('id',grid).addClass("userGrid")
@@ -69,6 +77,8 @@ $(()=>{
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
                 toggleTurns()
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
+                gridsLeftPc-=1
+                $('.shipsCount#user').text(`Ship grids remaining: ${gridsLeftPc}`)
                 gameOver()
             } else {
                 $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
@@ -93,6 +103,8 @@ $(()=>{
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
                    toggleTurns()
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
+                   gridsLeftUser-=1
+                   $('.shipsCount#pc').text(`Ship grids remaining: ${gridsLeftUser}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    gameOver()
                    setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
