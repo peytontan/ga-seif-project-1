@@ -12,7 +12,7 @@ $(()=>{
         const pcHits = $('.userGrid.hit').length //this is waht pc managed to hit 
         if (userHits === 17 || pcHits === 17) {
             const winner = userHits === 17 ? 'User' : 'PC' //set winner to be user if all 5 ships (17 grids) of PC's are hit, else set PC to be the winner when all 5 ships (17 grids) of user are sunk 
-            alert(`Game over! ${winner} wins! Better luck next time`)
+            alert(`Game over!! ${winner} wins!!`)
             $('.clickGrid').off('click') //stops the game once there is a winner
         }
       }
