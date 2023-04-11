@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  justify-content: center;
+  margin-top:50px
 }
 
 .board-wrapper {
@@ -57,6 +57,11 @@ h1 {
   text-align: center;
   margin-left: 50px;
   margin-right: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .shipsCount {
@@ -84,13 +89,62 @@ h1 {
   white-space: pre;
 }
 
-.reset:hover {
+/* .reset:hover {
   border-color: #dadce0;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
   color: #202124;
-}
+} */
 
-.reset:focus {
+/* .reset:focus{
   border-color: #4285f4;
   outline: none;
+} */
+
+#instructions {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  height: 36px;
+  line-height: 27px;
+  min-width: 54px;
+  padding: 0 16px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+}
+
+/* #instructions {
+  border-color: #dadce0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+  color: #202124;
+} */
+
+
+#popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  z-index: 9999;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#close-popup{
+  margin-right: auto;
+  margin-left:auto;
+  padding-left: auto;
+  padding-right: auto;
 }

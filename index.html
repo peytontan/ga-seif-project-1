@@ -32,13 +32,13 @@
       <div class='container'>
         <div class='board-wrapper user-side'>
           <div class='userBoard'></div>
-          <h1>Loaded Your Ships</h1>
+          <h1>User's Board</h1>
           <p class='shipsCount' id='user'></p>
         </div>
         
         <div class='board-wrapper pc-side'>
             <div class='boardToClick'></div>
-            <h1>Click to guess Enemy's ships</h1>
+            <h1>Enemy's board</h1>
             <p class='shipsCount' id='pc'></p>
         </div>
         
@@ -50,5 +50,38 @@
     
     <div class='board-wrapper'>
     <button class = reset>Reset Game</button>
+    <button id="instructions">Instructions</button>
+    <div id="popup" style="display: none;">
+      <p>There are a total of 5 ships which occupies a 17 grids. The fastest player that manage to sink all 17 grids/5 ships, wins.
+      <br>
+      <br>
+        Ships are currently randomly placed for both PC and user with the following requirements:
+      <br> 1. There is no overlapping of ships at any point in time
+      <br> 2. Horizontally placed ships will not be broken up into 2 rows 
+      <br> 3. Ships will not be placed out of the grids, it will only be placed in the board itself
+      <br> 4. Ships are not diagonally placed, only horiztonally or vertically
+      <br>
+      <br>
+      User can sink the enemy's ships by randomly selecting a grid at every turn on the right board titled Enemy's board.<br>
+      User and PC will take turns, user will start first. 
+      <br>
+      <br>
+      User's ships are denoted by the grey grids.
+      <br>If a ship was hit, the grid will be changed to red. 
+      <br>If a ship was missed, the grid will be changed to green.
+      <br>
+      <br>
+      
+      The 5 types of ships are: 
+      <br>1. Carrier - 5 grids 
+      <br>2. Battleship - 4 grids
+      <br>3. Cruiser - 3 grids
+      <br>4. Submarine - 3 grids
+      <br>5. Destroyer - 2 grids
+      <br>
+      <br>
+      </p>
+      <button id="close-popup">Ready to play!</button>
+    </div>
 </body>
 </html>

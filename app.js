@@ -7,6 +7,13 @@ $(()=>{
         location.reload(); //this reloads the current document
     }) 
 
+    $('#instructions').on("click", ()=> { //when we click on instructions this will fade in
+          $('#popup').fadeIn();
+        });
+        $('#close-popup').on("click", ()=>  { //when we click on close in the instructions pop up, this will fade out
+          $('#popup').fadeOut();
+        });
+
     const gameOver = () => {
         const userHits = $('.clickGrid.hit').length //this is what user managed to hit
         const pcHits = $('.userGrid.hit').length //this is waht pc managed to hit 
@@ -77,17 +84,17 @@ $(()=>{
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
                 toggleTurns()
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
+                gameOver()
+                console.log("test")
                 gridsLeftPc-=1
                 $('.shipsCount#user').text(`Ship grids remaining: ${gridsLeftPc}`)
-                gameOver()
             } else {
+                toggleTurns()
                 $(`#${gridIndex}.userGrid`).css("background-color","#77DD77").toggleClass("missed")
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                toggleTurns()
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                gameOver()
                 }
 }
 
@@ -98,6 +105,8 @@ $(()=>{
                if (userTurn){
                    $(`#${cell}.clickGrid`).css("background-color","#ff6961")
                    $(`#${cell}.clickGrid`).toggleClass("hit")
+                   gameOver()
+                   console.log("test3")
                 //    alert(`grid ${cell} was hit`)
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
@@ -106,7 +115,6 @@ $(()=>{
                    gridsLeftUser-=1
                    $('.shipsCount#pc').text(`Ship grids remaining: ${gridsLeftUser}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-                   gameOver()
                    setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
@@ -117,12 +125,13 @@ $(()=>{
                if (userTurn){
                    $(`#${cell}.clickGrid`).css("background-color","#77DD77")
                    $(`#${cell}.clickGrid`).toggleClass("missed")
+                   gameOver()
+                   console.log("test4")
                    turnCounter+=1
-                   $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
                    toggleTurns()
+                   $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                   gameOver()
                    setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
