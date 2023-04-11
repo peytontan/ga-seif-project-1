@@ -29,18 +29,21 @@
         <span class="popuptext" id="myPopup">The first player to sink all ships (total of 17 grids), wins the game. </span>
       </div> -->
 
-    <div class = 'container'>
-        <div class = "userBoard" ></div>
-        <h1>Loaded Your Ships</h1>
-        <p class = shipsCount id = user></p>
+      <div class='container'>
+        <div class='board-wrapper user-side'>
+          <div class='userBoard'></div>
+          <h1>Loaded Your Ships</h1>
+          <p class='shipsCount' id='user'></p>
+        </div>
         
-        <div class = "boardToClick"></div>
-        <h1>Click to guess Enemy's ships</h1>
-        <p class = shipsCount id = pc></p>
-        <!-- <h1>Enemy's board (for testing)</h1> -->
-        <div class = "PC"></div>
-    </div>
-
+        <div class='board-wrapper pc-side'>
+          <div class='boardToClick'></div>
+          <h1>Click to guess Enemy's ships</h1>
+          <p class='shipsCount' id='pc'></p>
+        </div>
+        
+        <div class='PC'></div>
+      </div>
     <p class = turnCount></p>
     <p class = playerTracker></p>
 
