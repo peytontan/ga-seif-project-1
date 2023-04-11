@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: flex-start; /*this ensures that the alignment of the 2 boards are equal*/
 }
 
 .board-wrapper:last-child {
