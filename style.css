@@ -25,18 +25,18 @@
   grid-gap: 1px;
   width: 400px;
   margin: 0 auto;
-  background-color: #78d4ff;
+  background-color: #7ABACC;
 }
 
 .userGrid,
 .pcGrid,
 .clickGrid {
-  width: 40px;
-  height: 40px;
+  width: 39px;
+  height: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2c96c7;
+  background-color: #6faaba;
   caret-color: transparent;
 }
 

@@ -37,7 +37,7 @@ $(()=>{
         $battleShipBoard.append($gridToPlace)
         shipsUser.forEach(element => {
             element.location.forEach(cell => {
-                $(`#${cell}.userGrid`).css("background-color","grey") //need to think of ways to stop it from overlapping
+                $(`#${cell}.userGrid`).css("background-color","#abab98") //need to think of ways to stop it from overlapping
             })
         })
     })
@@ -49,7 +49,7 @@ $(()=>{
         $pcBattleshipBoard.append($pcGrid)
         shipPC.forEach(element => {
             element.location.forEach(cell => {
-                $(`#${cell}.pcGrid`).css("background-color","red") //need to think of ways to stop it from overlapping
+                $(`#${cell}.pcGrid`).css("background-color","#ff6961") //need to think of ways to stop it from overlapping
             })
         })
         $pcBattleshipBoard.hide() //hide this later on, if we wanna cheat we can check in elements hehe
@@ -71,7 +71,7 @@ $(()=>{
         let index = Math.floor(Math.random() * availableIndexesPC.length)//it needs to be taking from availableIndexPC because everytime its PC's turn, the number of index available for selection reduces
         let gridIndex = availableIndexesPC[index]   
             if (userGrids.includes(gridIndex)){
-                $(`#${gridIndex}.userGrid`).css("background-color","red").toggleClass("hit")
+                $(`#${gridIndex}.userGrid`).css("background-color","#ff6961").toggleClass("hit")
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
@@ -81,7 +81,7 @@ $(()=>{
                 $('.shipsCount#user').text(`Ship grids remaining: ${gridsLeftPc}`)
                 gameOver()
             } else {
-                $(`#${gridIndex}.userGrid`).css("background-color","green").toggleClass("missed")
+                $(`#${gridIndex}.userGrid`).css("background-color","#77DD77").toggleClass("missed")
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
@@ -96,7 +96,7 @@ $(()=>{
     pcGrids.forEach(cell => {
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
-                   $(`#${cell}.clickGrid`).css("background-color","red")
+                   $(`#${cell}.clickGrid`).css("background-color","#ff6961")
                    $(`#${cell}.clickGrid`).toggleClass("hit")
                 //    alert(`grid ${cell} was hit`)
                    turnCounter+=1
@@ -115,7 +115,7 @@ $(()=>{
        pcNotTakenGrids.forEach(cell => { //to  see which of the enemy grids are not occupied, and when its clicked on, we need to change it to green because it means that it wasn't hit on 
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
-                   $(`#${cell}.clickGrid`).css("background-color","green")
+                   $(`#${cell}.clickGrid`).css("background-color","#77DD77")
                    $(`#${cell}.clickGrid`).toggleClass("missed")
                    turnCounter+=1
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
