@@ -125,7 +125,6 @@ $(()=>{
                if (userTurn){
                    $(`#${cell}.clickGrid`).css("background-color","#77DD77")
                    $(`#${cell}.clickGrid`).toggleClass("missed")
-                   gameOver()
                    console.log("test4")
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
