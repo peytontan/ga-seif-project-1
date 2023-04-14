@@ -121,7 +121,7 @@ $(()=>{
                    gridsLeftUser-=1
                    $('.shipsCount#pc').text(`Ship grids remaining: ${gridsLeftUser}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-                   setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
+                   setTimeout(()=>{pcAction()},1000) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        }) 
@@ -137,7 +137,7 @@ $(()=>{
                    toggleTurns()
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                   setTimeout(()=>{pcAction()},300) //set pcAction to only happen .3seconds later after user is done clicking
+                   setTimeout(()=>{pcAction()},1000) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        })
