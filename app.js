@@ -90,7 +90,7 @@ $(()=>{
                 toggleTurns()
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                 gameOver()
-                console.log("test")
+                // console.log("test")
                 gridsLeftPc-=1
                 $('.shipsCount#user').text(`Ship grids remaining: ${gridsLeftPc}`)
             } else {
@@ -112,7 +112,7 @@ $(()=>{
                 //    $(`#${cell}.clickGrid`).toggleClass("hit")
                    shipHitSound.play()
                    gameOver()
-                   console.log("test3")
+                //    console.log("test3")
                 //    alert(`grid ${cell} was hit`)
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
@@ -121,7 +121,7 @@ $(()=>{
                    gridsLeftUser-=1
                    $('.shipsCount#pc').text(`Ship grids remaining: ${gridsLeftUser}`)
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
-                   setTimeout(()=>{pcAction()},1000) //set pcAction to only happen .3seconds later after user is done clicking
+                   setTimeout(()=>{pcAction()},1200) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        }) 
@@ -131,13 +131,13 @@ $(()=>{
                if (userTurn){
                    $(`#${cell}.clickGrid`).css("background-color","#77DD77")
                    $(`#${cell}.clickGrid`).toggleClass("missed")
-                   console.log("test4")
+                //    console.log("test4")
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
                    toggleTurns()
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                   setTimeout(()=>{pcAction()},1000) //set pcAction to only happen .3seconds later after user is done clicking
+                   setTimeout(()=>{pcAction()},1200) //set pcAction to only happen .3seconds later after user is done clicking
                }
            })
        })
