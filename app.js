@@ -1,6 +1,9 @@
 import { createBoard, arrayAlphabets, arrayNumbers, board,userBoard, gameBoard } from "./grid.js"
 import {pcTakenGrids, userTakenGrids, Ship, carrierUser, battleshipUser, cruiserUser, submarineUser,destroyerUser,shipsUser,carrierPC,battleshipPC,cruiserPC,submarinePC,destroyerPC,shipPC,userNotTakenGrids,pcNotTakenGrids,userGrids,pcGrids} from "./ship.js"
 
+const shipHitSound = new Audio("ship_hit_short.wav")
+const gameOverSound = new Audio("ES_Video Game Descend 1 - SFX Producer.wav")
+
 let availableIndexesPC = userBoard.gridIndex //need to define this variable first
 $(()=>{
     $('.reset').on('click', () => {
@@ -19,6 +22,7 @@ $(()=>{
         const pcHits = $('.userGrid.hit').length //this is waht pc managed to hit 
         if (userHits === 17 || pcHits === 17) {
             const winner = userHits === 17 ? 'User' : 'PC' //set winner to be user if all 5 ships (17 grids) of PC's are hit, else set PC to be the winner when all 5 ships (17 grids) of user are sunk 
+            gameOverSound.play()
             alert(`Game over!! ${winner} wins!!`)
             $('.clickGrid').off('click') //stops the game once there is a winner
         }
@@ -79,6 +83,7 @@ $(()=>{
         let gridIndex = availableIndexesPC[index]   
             if (userGrids.includes(gridIndex)){
                 $(`#${gridIndex}.userGrid`).css("background-color","#ff6961").toggleClass("hit")
+                shipHitSound.play()
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
@@ -103,8 +108,9 @@ $(()=>{
     pcGrids.forEach(cell => {
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
-                   $(`#${cell}.clickGrid`).css("background-color","#ff6961")
-                   $(`#${cell}.clickGrid`).toggleClass("hit")
+                   $(`#${cell}.clickGrid`).css("background-color","#ff6961").toggleClass("hit")
+                //    $(`#${cell}.clickGrid`).toggleClass("hit")
+                   shipHitSound.play()
                    gameOver()
                    console.log("test3")
                 //    alert(`grid ${cell} was hit`)
