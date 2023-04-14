@@ -84,12 +84,12 @@ $(()=>{
             if (userGrids.includes(gridIndex)){
                 $(`#${gridIndex}.userGrid`).css("background-color","#ff6961").toggleClass("hit")
                 shipHitSound.play()
+                gameOver()
                 availableIndexesPC = availableIndexesPC.filter((element) => element!==gridIndex) //removing the already selected index so that it will not be used to select the grid again
                 turnCounter+=1
                 $('.turnCount').text(`Turn Count = ${turnCounter}`)
                 toggleTurns()
                 $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
-                gameOver()
                 // console.log("test")
                 gridsLeftPc-=1
                 $('.shipsCount#user').text(`Ship grids remaining: ${gridsLeftPc}`)
@@ -109,11 +109,9 @@ $(()=>{
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
                    $(`#${cell}.clickGrid`).css("background-color","#ff6961").toggleClass("hit")
-                //    $(`#${cell}.clickGrid`).toggleClass("hit")
                    shipHitSound.play()
                    gameOver()
                 //    console.log("test3")
-                //    alert(`grid ${cell} was hit`)
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
                    toggleTurns()
@@ -129,13 +127,13 @@ $(()=>{
        pcNotTakenGrids.forEach(cell => { //to  see which of the enemy grids are not occupied, and when its clicked on, we need to change it to green because it means that it wasn't hit on 
            $(`#${cell}.clickGrid`).on('click',()=>{
                if (userTurn){
-                   $(`#${cell}.clickGrid`).css("background-color","#77DD77")
-                   $(`#${cell}.clickGrid`).toggleClass("missed")
+                   $(`#${cell}.clickGrid`).css("background-color","#77DD77").toggleClass("missed")
+                //    $(`#${cell}.clickGrid`).toggleClass("missed")
                 //    console.log("test4")
                    turnCounter+=1
                    $('.turnCount').text(`Turn Count = ${turnCounter}`)
-                   toggleTurns()
                    $(`#${cell}.clickGrid`).off('click') //this will stop the grid that was already clicked on to stopped being counted as a turn, and it will not allow to change the turn unless a valid grid has been clicked
+                   toggleTurns()
                    $('.playerTracker').text(`Player's Turn: ${userTurn ===true ? "user" : "pc"}`)
                    setTimeout(()=>{pcAction()},1200) //set pcAction to only happen .3seconds later after user is done clicking
                }
